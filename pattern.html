@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pattern</title>
+    <style>
+        .pattern {
+            font-family: Arial, sans-serif;
+            font-size: 20px;
+            white-space: pre;
+        }
+    </style>
+</head>
+<body>
+    <p id="t" class="pattern"></p>
+    <script>
+         function generatePattern() {
+            let pattern = '';
+            for (let i = 1; i <= 5; i++) {
+                pattern += ''; 
+                for (let j = 1; j <= i; j++) {
+                    pattern += j; 
+                }
+                pattern += '\n'; 
+            }
+            return pattern;
+        }
+        const pattern = generatePattern();
+        document.getElementById('t').textContent = pattern;
+    </script>
+    
+</body>
+</html>
