@@ -4,7 +4,7 @@ ol{
     list-style-type: none;
     margin: 0;
     padding: 10px;
-    background-color: chocolate;
+    background-color: grey;
     color: aliceblue;
 }
 .link{
@@ -14,6 +14,6 @@ ol{
 }
 .link:hover{
     background-color: aliceblue;
-    color: chocolate;
+    color: grey;
     border-radius: 10px;
 }
