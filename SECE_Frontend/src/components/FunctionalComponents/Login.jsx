@@ -1,8 +1,7 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-const Signup = () => {
+const Login = () => {
   const [formData, setFormData] = useState({
-    username: "",
     email: "",
     password: "",
   });
@@ -17,23 +16,13 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form Data Submitted: ", formData);
+    console.log("Login Form Data Submitted: ", formData);
   };
 
   return (
     <div>
-      <h2>Welcome to the Signup Page</h2>
+      <h2>Welcome to the Login Page</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Username:</label>
-          <input
-            type="text"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-            required
-          />
-        </div>
         <div>
           <label>Email:</label>
           <input
@@ -54,10 +43,10 @@ const Signup = () => {
             required
           />
         </div>
-        <button type="submit">Sign Up</button>
+        <button type="submit">Login</button>
       </form>
     </div>
   );
 };
 
-export default Signup;
+export default Login;
