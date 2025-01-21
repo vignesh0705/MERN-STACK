@@ -1,40 +1,19 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
+import '../../css/Navbar.css'
 
 const Navbar = () => {
   return (
-    <nav style={styles.navbar}>
-      <ul style={styles.navList}>
-        <li style={styles.navItem}><a href="#home" style={styles.link}>Home</a></li>
-        <li style={styles.navItem}><a href="#about" style={styles.link}>About</a></li>
-        <li style={styles.navItem}><a href="#gallery" style={styles.link}>Gallery</a></li>
-        <li style={styles.navItem}><a href="#contact" style={styles.link}>Contact</a></li>
-      </ul>
-    </nav>
+    <header>
+      <nav>
+        <ol>
+          <li><Link to='/' className="link">Home</Link></li>
+          <li><Link to='/about' className="link">About</Link></li>
+          <li><Link to='/gallery' className="link">Gallery</Link></li>
+          <li><Link to='/contact' className="link">Contact</Link></li>
+          <li><Link to='/sign-up' className="link">Signup</Link></li>
+        </ol>
+      </nav>
+    </header>
   );
 };
-
-const styles = {
-  navbar: {
-    backgroundColor: '#242424',
-    padding: '1rem',
-    textAlign: 'center',
-  },
-  navList: {
-    listStyleType: 'none',
-    margin: 0,
-    padding: 0,
-    display: 'flex',
-    justifyContent: 'center',
-    gap: '2rem',
-  },
-  navItem: {
-    display: 'inline',
-  },
-  link: {
-    color: '#ffffff',
-    textDecoration: 'none',
-    fontSize: '1.2rem',
-  },
-};
-
-export default Navbar;
+export default Navbar
