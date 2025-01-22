@@ -8,6 +8,7 @@ import {BrowserRouter ,Routes ,Route} from 'react-router-dom';
 import SignUp from "./components/FunctionalComponents/Signup";
 import UseEffect from "./components/FunctionalComponents/UseEffect";
 import UseStateComponent from "./components/FunctionalComponents/UseState";
+import UseEffectAPI from "./components/FunctionalComponents/UseEffectAPI";
 
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
        <Route path="/about" element={<About Hello="Vigneshvar" />}></Route> {/* props Example */}
        <Route path="/profile" element={<Profile name="Vigneshvar pandi" age={19} profession="Developer" />}></Route>
        <Route path="/contact" element={<Contact />}></Route>   {/* state Example */}
+       <Route path="/use-api" element={<UseEffectAPI/>}></Route>
        {/*<Routerpath="" */}
        </Routes>
       </BrowserRouter>
