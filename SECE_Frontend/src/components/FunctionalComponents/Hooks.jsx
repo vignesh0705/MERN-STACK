@@ -1,7 +1,4 @@
-const Hooks = () => {
-    return (
-        <>
-        <p>Hooks pages</p>
-        </>
-    )
+export default function Hooks() {
+    return(<>
+    <p>Hooks Page</p></>)
 }
