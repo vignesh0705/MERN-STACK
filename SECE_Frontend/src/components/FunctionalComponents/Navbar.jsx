@@ -11,7 +11,6 @@ const Navbar = () => {
           <li><Link to='/gallery' className="link">Gallery</Link></li>
           <li><Link to='/contact' className="link">Contact</Link></li>
           <li><Link to='/sign-up' className="link">Signup</Link></li>
-          <li><Link to='/login' className="link">Login</Link></li> {/* Add Login Link */}
         </ol>
       </nav>
     </header>

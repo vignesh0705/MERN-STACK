@@ -1,63 +1,36 @@
-import { useState } from 'react';
+import React from 'react'
+import "../../css/SignUp.css"
+import {Link} from "react-router-dom"
 
-const Signup = () => {
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form Data Submitted: ", formData);
-  };
-
-  return (
-    <div>
-      <h2>Welcome to the Signup Page</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Username:</label>
-          <input
-            type="text"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit">Sign Up</button>
-      </form>
-    </div>
-  );
-};
-
-export default Signup;
+const SignUp = ()=>{
+  return(
+    <div className="body">
+    <div className="center">
+            <div class="text">
+               Login Form
+            </div>
+            <form action="#">
+               <div className="data">
+                  <label>Email or Phone</label>
+                  <input type="text" required/>
+               </div>
+               <div className="data">
+                  <label>Password</label>
+                  <input type="password" required/>
+               </div>
+               <div className="forgot-pass">
+                  <a href="#">Forgot Password?</a> 
+               </div>
+               <div className="btn">
+                  <div className="inner"></div>
+                  <Link to="/home"><button className="log-but" type="submit">login</button></Link>
+               </div>
+               <div className="signup-link">
+                  Not a member? <a href="#">Signup now</a>
+               </div>
+            </form>
+         </div>
+         </div>
+  )
+}
+export default SignUp;

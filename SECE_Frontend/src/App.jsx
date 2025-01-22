@@ -5,7 +5,6 @@ import Gallery from "./components/FunctionalComponents/Gallery";
 import Contact from "./components/FunctionalComponents/Contact";
 import Navbar from "./components/FunctionalComponents/Navbar";
 import Signup from "./components/FunctionalComponents/Signup";
-import Login from "./components/FunctionalComponents/Login"; 
 
 function App() {
   return (
@@ -17,7 +16,6 @@ function App() {
         <Route path="/gallery" element={<Gallery page="Gallery" img="SECE Logo" />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/sign-up" element={<Signup />} />
-        <Route path="/login" element={<Login />} /> 
       </Routes>
     </BrowserRouter>
   );
