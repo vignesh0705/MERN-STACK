@@ -2,22 +2,43 @@ import { useEffect, useState } from "react";
 import axios from 'axios';
 
 const UseEffectAPI = () => {
-    var [post, setpost] = useState([]);
+    const [posts, setPosts] = useState([]);
+
     useEffect(() => {
-        axios.get('https://jsonplaceholder.typicode.com/posts/')
-            .then((res) => { setpost(res.data) })
+        axios.get('https://fakestoreapi.com/products')
+            .then((res) => {console.log(res.data); 
+                setPosts(res.data) 
+            })
             .catch((err) => { console.log(err); })
-    },[])
-    return(
+    }, []);
+
+    return (
         <>
-            <h2>This is page meant for using with API.</h2>
-            <h3>The contents inside my JOSNPlaceholder API post are</h3>
-            <ul>
-                {post.map((element) =>(
-                    <li key={element.id}>{element.title}</li>
+            <h2>This is a page meant for using with API.</h2>
+            <h3>The contents inside my API posts are:</h3>
+            <div style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+                gap: "20px",
+                padding: "20px"
+            }}>
+                {posts.map((post) => (
+                    <div 
+                        key={post.id} 
+                        style={{border: "1px solid #ccc",borderRadius: "8px",
+                            padding: "10px",textAlign: "center"}}>
+
+                        <img 
+                            src={post.image} 
+                            alt={`Post ${post.id}`} 
+                            style={{ width: "100%", borderRadius: "8px" }} />
+                        <h4>{post.title}</h4> 
+                        <p>{post.description}</p>
+                    </div>
                 ))}
-            </ul>
+            </div>
         </>
     );
 }
+
 export default UseEffectAPI;
