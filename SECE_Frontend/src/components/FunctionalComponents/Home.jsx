@@ -1,8 +1,10 @@
-const Home = () => {
-  return (
+import Navbar from "./Navbar";
+const Home = () =>{
+    return (
     <div>
-      <h2>Welcome to Home Page</h2>
+        <Navbar />
+        <h2>Welcome to React Functional component</h2>
     </div>
-  );
-};
+    )
+}
 export default Home;
