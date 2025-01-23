@@ -5,6 +5,7 @@ import Profile from "./components/FunctionalComponents/Profile";
 import About from "./components/FunctionalComponents/About";
 import Contact from "./components/FunctionalComponents/Contact";
 import {BrowserRouter ,Routes ,Route} from 'react-router-dom';
+import SignUp from "./components/FunctionalComponents/Signup";
 import UseEffect from "./components/FunctionalComponents/UseEffect";
 import UseStateComponent from "./components/FunctionalComponents/UseState";
 import UseEffectAPI from "./components/FunctionalComponents/UseEffectAPI";
