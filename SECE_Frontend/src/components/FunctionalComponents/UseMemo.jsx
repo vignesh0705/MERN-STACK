@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import Navbar from "./Navbar";
 
 var slowFunction = (num) => {
     for (let slow = 0; slow < 10000000; slow++) {}
@@ -18,6 +19,7 @@ const UseMemo = () => {
     },[num])
     return(
         <div className="" style={styling}>
+            <Navbar />
             <h2>This page is Memo</h2>
             <input type="number" value={num} onChange={(e) => {setNum(e.target.value)}} />
             <button onClick={() => setDark(curTheme => !curTheme)}>Toggle Theme</button>
