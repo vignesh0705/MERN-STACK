@@ -9,6 +9,8 @@ import SignUp from "./components/FunctionalComponents/Signup";
 import UseEffect from "./components/FunctionalComponents/UseEffect";
 import UseStateComponent from "./components/FunctionalComponents/UseState";
 import UseEffectAPI from "./components/FunctionalComponents/UseEffectAPI";
+import UseRef from "./components/FunctionalComponents/UseRef";
+import UseMemo from "./components/FunctionalComponents/UseMemo";
 
 
 const App = () => {
@@ -25,6 +27,8 @@ const App = () => {
        <Route path="/profile" element={<Profile name="Vigneshvar pandi" age={19} profession="Developer" />}></Route>
        <Route path="/contact" element={<Contact />}></Route>   {/* state Example */}
        <Route path="/use-api" element={<UseEffectAPI/>}></Route>
+       <Route path="/use-ref" element={<UseRef/>}></Route>
+       <Route path="/use-memo" element={<UseMemo/>}></Route>
        {/*<Routerpath="" */}
        </Routes>
       </BrowserRouter>
