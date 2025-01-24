@@ -14,8 +14,6 @@ import UseMemo from "./components/FunctionalComponents/UseMemo";
 import UseReducerEX from "./components/FunctionalComponents/Usereducer";
 import UseCallback from "./components/FunctionalComponents/UseCallback";
 
-
-
 const App = () => {
   return (
     <>
@@ -34,6 +32,7 @@ const App = () => {
        <Route path="/use-memo" element={<UseMemo/>}></Route>
        <Route path="/use-redu" element={<UseReducerEX/>}></Route>
        <Route path="/use-call" element={<UseCallback/>}></Route>
+       <Route path="/react-life" element={<Reactlifecyclemethods/>}></Route>
        {/*<Routerpath="" */}
        </Routes>
       </BrowserRouter>
