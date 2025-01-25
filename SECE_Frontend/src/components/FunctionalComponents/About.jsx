@@ -1,10 +1,18 @@
-import Navbar from "./Navbar";
-const About = (Props) => {
-    return(
-        <div>
-            <Navbar />
-            <h3>Hello {Props.Hello} !!</h3>
-        </div>
-    )
-}
+import { useState } from "react";
+
+const About = () => {
+  var [text, setText] = useState("");
+  function handleText(e){
+    setText(e.target.value)
+  }
+  return (
+    <div>
+      <h2>This is About Component.</h2>
+      <h2>TextArea:</h2>
+{/* <textarea value={text} onChange={(event=>setText(event.target.value)} /> */}
+      <textarea value={text} onChange={handleText} />
+      <p>The text is {text}</p>
+    </div>
+  );
+};
 export default About;

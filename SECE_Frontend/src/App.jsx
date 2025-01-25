@@ -16,6 +16,9 @@ import UseCallback from "./components/FunctionalComponents/UseCallback";
 import Students from "./components/FunctionalComponents/Students";
 import Memo from "./components/FunctionalComponents/Memo";
 import ReactLifecycleMethods from "./components/classComponents/ReactLifeCycleMethods";
+import UseLocalStorage from "./components/FunctionalComponents/UseLocalStorage";
+import LazyLoadingWithSuspense from "./components/FunctionalComponents/LazyLoadingWithSuspense";
+import HoC from "./components/Hoc/HoC";
 
 const App = () => {
   return (
@@ -38,6 +41,8 @@ const App = () => {
        <Route path="/react-life" element={<ReactLifecycleMethods/>}></Route>
        <Route path="/use-context" element={<Students/>}></Route>
        <Route path="/use-Memo" element={<Memo/>}></Route>
+       <Route path="/lazy" element={<LazyLoadingWithSuspense />}></Route>
+       <Route path="/hoc" element={<HoC/>}></Route>
        {/*<Routerpath="" */}
        </Routes>
       </BrowserRouter>

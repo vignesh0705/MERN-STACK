@@ -7,6 +7,10 @@ const Navbar = () => {
   const toggleDropdown = () => {
     showDropdown((dropdown) => !dropdown);
   };
+  var [dropdown1, showDropdown1] = useState(false);
+  const toggleDropdown1 = () => {
+    showDropdown1((dropdown1) => !dropdown1);
+  };
   return (
     <header>
       <nav>
@@ -79,12 +83,38 @@ const Navbar = () => {
                     UseContext
                   </Link>
                 </li>
+                <li>
+                  <Link to="/use-custom" className="dropdown-link">
+                    UseLocalStorage
+                  </Link>
+                </li>
+              </ul>
+            )}
+          </div>
+          <div
+            onMouseEnter={toggleDropdown1}
+            onMouseLeave={toggleDropdown1}
+            className="dropdown"
+          >
+            <span className="link">Memoization</span>
+            {dropdown1 && (
+              <ul className="dropdown-list">
+                <li>
+                  <Link to="/memo" className="dropdown-link">
+                    Memo
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/lazy" className="dropdown-link">
+                    Lazy,Suspense
+                  </Link>
+                </li>
               </ul>
             )}
           </div>
           <li>
-            <Link to="/memo" className="link">
-              React.memo
+            <Link to="/hoc" className="link">
+              HoC
             </Link>
           </li>
           <li>
