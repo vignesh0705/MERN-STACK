@@ -16,9 +16,10 @@ import UseCallback from "./components/FunctionalComponents/UseCallback";
 import Students from "./components/FunctionalComponents/Students";
 import Memo from "./components/FunctionalComponents/Memo";
 import ReactLifecycleMethods from "./components/classComponents/ReactLifeCycleMethods";
-import UseLocalStorage from "./components/FunctionalComponents/UseLocalStorage";
+// import UseLocalStorage from "./components/FunctionalComponents/UseLocalStorage";
 import LazyLoadingWithSuspense from "./components/FunctionalComponents/LazyLoadingWithSuspense";
 import HoC from "./components/Hoc/HoC";
+import useeffecApi from "./components/FunctionalComponents/useeffecApi";  
 
 const App = () => {
   return (
@@ -32,18 +33,18 @@ const App = () => {
        <Route path="/card" element={<Card title="Introduction" description="This is a simple card component." />}></Route>
        <Route path="/about" element={<About Hello="Vigneshvar" />}></Route> {/* props Example */}
        <Route path="/profile" element={<Profile name="Vigneshvar pandi" age={19} profession="Developer" />}></Route>
-       <Route path="/contact" element={<Contact />}></Route>   {/* state Example */}
-       <Route path="/use-api" element={<UseEffectAPI/>}></Route>
-       <Route path="/use-ref" element={<UseRef/>}></Route>
-       <Route path="/use-memo" element={<UseMemo/>}></Route>
-       <Route path="/use-redu" element={<UseReducerEX/>}></Route>
-       <Route path="/use-call" element={<UseCallback/>}></Route>
-       <Route path="/react-life" element={<ReactLifecycleMethods/>}></Route>
-       <Route path="/use-context" element={<Students/>}></Route>
-       <Route path="/use-Memo" element={<Memo/>}></Route>
-       <Route path="/lazy" element={<LazyLoadingWithSuspense />}></Route>
-       <Route path="/hoc" element={<HoC/>}></Route>
-       {/*<Routerpath="" */}
+      /* state Example */
+        <Route path="/use-api" element={<UseEffectAPI/>}></Route>
+        <Route path="/use-ref" element={<UseRef/>}></Route>
+        <Route path="/use-memo" element={<UseMemo/>}></Route>
+        <Route path="/use-redu" element={<UseReducerEX/>}></Route>
+        <Route path="/use-call" element={<UseCallback/>}></Route>
+        <Route path="/react-life" element={<ReactLifecycleMethods/>}></Route>
+        <Route path="/use-context" element={<Students/>}></Route>
+        <Route path="/use-Memo" element={<Memo/>}></Route>
+        <Route path="/lazy" element={<LazyLoadingWithSuspense />}></Route>
+        <Route path="/hoc" element={<HoC/>}></Route>
+        <Route path="/use-effect-Api" element={<useeffecApi/>}></Route>
        </Routes>
       </BrowserRouter>
       <Footer />

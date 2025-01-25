@@ -64,6 +64,11 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li>
+                  <Link to="use-effect-Api" className="dropdown-link">
+                    UseEffectApi
+                  </Link>
+                </li>
+                <li>
                   <Link to="/use-ref" className="dropdown-link">
                     UseRef
                   </Link>
