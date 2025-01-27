@@ -26,11 +26,6 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/gallery" className="link">
-              Gallery
-            </Link>
-          </li>
-          <li>
             <Link to="/contact" className="link">
               Contact
             </Link>

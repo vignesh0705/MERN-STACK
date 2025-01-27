@@ -19,7 +19,7 @@ import ReactLifecycleMethods from "./components/classComponents/ReactLifeCycleMe
 // import UseLocalStorage from "./components/FunctionalComponents/UseLocalStorage";
 import LazyLoadingWithSuspense from "./components/FunctionalComponents/LazyLoadingWithSuspense";
 import HoC from "./components/Hoc/HoC";
-import useeffecApi from "./components/FunctionalComponents/useeffecApi";  
+// import useeffecApi from "./components/FunctionalComponents/useeffecApi";  
 
 const App = () => {
   return (
@@ -28,6 +28,7 @@ const App = () => {
       <Routes>
        <Route path="/" element={<SignUp />}></Route>
        <Route path="/home" element={<Home />}></Route>
+       <Route path="/contact" element={<Contact />}></Route>
        <Route path='/use-state' element={<UseStateComponent/>}></Route>
        <Route path='/use-effect' element={<UseEffect/>}></Route>
        <Route path="/card" element={<Card title="Introduction" description="This is a simple card component." />}></Route>
