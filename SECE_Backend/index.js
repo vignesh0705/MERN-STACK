@@ -3,7 +3,7 @@ const path = require("path");
 const mdb = require("mongoose");
 const dotenv = require("dotenv");
 const Signup = require("./models/signupSchema");
-const e = require("express");
+const Login = require("./models/loginSchema"); // Import the login schema
 
 const app = express();
 dotenv.config();
@@ -43,18 +43,40 @@ app.post("/signup", (req, res) => {
     res.status(400).send("Signup Unsuccessful", error);
   }
 });
+
+app.post("/login", async (req, res) => {
+  var { username, password } = req.body;
+  try {
+    const user = await Signup.findOne({ username: username, password: password });
+    const loginAttempt = new Login({
+      username: username,
+      success: !!user,
+    });
+    await loginAttempt.save();
+
+    if (user) {
+      res.status(200).send("Login Successful");
+    } else {
+      res.status(401).send("Login Unsuccessful");
+    }
+  } catch (error) {
+    res.status(500).send("An error occurred during login", error);
+  }
+});
+
 app.get("/getsignupdet", async (req, res) => {
   var signUpdet = await Signup.find();
   res.status(200).json(signUpdet);
 });
-app.post("/updatedet", async(req, res) => {
+
+app.post("/updatedet", async (req, res) => {
   var updateRec = await Signup.findOneAndUpdate(
     { username: "abi290" },
     { $set: { username: "abi2006" } }
   );
   console.log(updateRec);
-  updateRec.save()
-  res.json("Record Updated")
+  updateRec.save();
+  res.json("Record Updated");
 });
 
 app.listen(3001, () => {
