@@ -31,6 +31,7 @@ const App = () => {
        <Route path="/contact" element={<Contact />}></Route>
        <Route path='/use-state' element={<UseStateComponent/>}></Route>
        <Route path='/use-effect' element={<UseEffect/>}></Route>
+       <Route path='/sign-up' element={<SignUp/>}></Route>
        <Route path="/card" element={<Card title="Introduction" description="This is a simple card component." />}></Route>
        <Route path="/about" element={<About Hello="Vigneshvar" />}></Route> {/* props Example */}
        <Route path="/profile" element={<Profile name="Vigneshvar pandi" age={19} profession="Developer" />}></Route>
