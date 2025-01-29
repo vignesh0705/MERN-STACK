@@ -1,46 +1,47 @@
-const express = require("express");
-const path = require("path");
-const mdb = require("mongoose");
-const dotenv = require("dotenv");
-const Signup = require("./models/signupSchema");
-const Login = require("./models/loginSchema"); // Import the login schema
+require('dotenv').config();
+
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken');
 
 const app = express();
-dotenv.config();
-app.use(express.json());
+app.use(bodyParser.json());
 
-mdb
-  .connect(process.env.MONGODB_URL)
-  .then(() => {
-    console.log("MongoDB Connection Successful");
-  })
-  .catch((err) => {
-    console.log("MongoDB Connection Unsuccessful", err);
-  });
-
-app.get("/", (req, res) => {
-  res.send(
-    "Welcome to Backend my friend\nYour Roller coster starts from now on\nFasten your codebase so you can catchup of what is been taught"
-  );
-});
-app.get("/static", (req, res) => {
-  res.sendFile(path.join(__dirname, "index.html"));
+mongoose.connect('mongodb://localhost:27017/sece_backend', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
 
-app.post("/signup", (req, res) => {
-  var { firstName, lastName, username, email, password } = req.body;
+const signupSchema = new mongoose.Schema({
+  username: String,
+  password: String,
+});
+
+const loginSchema = new mongoose.Schema({
+  username: String,
+  success: Boolean,
+  timestamp: { type: Date, default: Date.now },
+});
+
+const payrollSchema = new mongoose.Schema({
+  username: String,
+  salary: Number,
+  date: { type: Date, default: Date.now },
+});
+
+const Signup = mongoose.model('Signup', signupSchema);
+const Login = mongoose.model('Login', loginSchema);
+const Payroll = mongoose.model('Payroll', payrollSchema);
+
+app.post("/signup", async (req, res) => {
+  var { username, password } = req.body;
   try {
-    const newSignup = new Signup({
-      firstName: firstName,
-      lastName: lastName,
-      username: username,
-      email: email,
-      password: password,
-    });
-    newSignup.save();
-    res.status(201).send("Signup Successful");
+    const newSignup = new Signup({ username, password });
+    await newSignup.save();
+    res.status(201).json({ message: "Signup Successful" });
   } catch (error) {
-    res.status(400).send("Signup Unsuccessful", error);
+    res.status(500).json({ message: "An error occurred during signup", error: error.message });
   }
 });
 
@@ -55,30 +56,52 @@ app.post("/login", async (req, res) => {
     await loginAttempt.save();
 
     if (user) {
-      res.status(200).send("Login Successful");
+      const token = jwt.sign({ username: user.username }, process.env.JWT_SECRET, { expiresIn: '1h' });
+      res.status(200).json({ message: "Login Successful", token: token });
     } else {
-      res.status(401).send("Login Unsuccessful");
+      res.status(401).json({ message: "Login Unsuccessful" });
     }
   } catch (error) {
-    res.status(500).send("An error occurred during login", error);
+    res.status(500).json({ message: "An error occurred during login", error: error.message });
   }
 });
 
-app.get("/getsignupdet", async (req, res) => {
-  var signUpdet = await Signup.find();
-  res.status(200).json(signUpdet);
+const verifyToken = (req, res, next) => {
+  const token = req.headers['authorization'];
+  if (!token) {
+    return res.status(403).json({ message: "No token provided" });
+  }
+  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+    if (err) {
+      return res.status(500).json({ message: "Failed to authenticate token" });
+    }
+    req.username = decoded.username;
+    next();
+  });
+};
+
+app.post("/payroll", verifyToken, async (req, res) => {
+  var { username, salary } = req.body;
+  try {
+    const newPayroll = new Payroll({ username, salary });
+    await newPayroll.save();
+    res.status(201).json({ message: "Payroll entry added successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "An error occurred while adding payroll entry", error: error.message });
+  }
 });
 
-app.post("/updatedet", async (req, res) => {
-  var updateRec = await Signup.findOneAndUpdate(
-    { username: "abi290" },
-    { $set: { username: "abi2006" } }
-  );
-  console.log(updateRec);
-  updateRec.save();
-  res.json("Record Updated");
+app.get("/payroll/:username", verifyToken, async (req, res) => {
+  var { username } = req.params;
+  try {
+    const payrolls = await Payroll.find({ username: username });
+    res.status(200).json(payrolls);
+  } catch (error) {
+    res.status(500).json({ message: "An error occurred while retrieving payroll entries", error: error.message });
+  }
 });
 
-app.listen(3001, () => {
-  console.log("Server Started");
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
